@@ -13,10 +13,10 @@ function ActiveUser({ children }) {
     function () {
       if (!user) navigate("/login");
     },
-    [user]
+    [user, navigate]
   );
 
   return <userContext.Provider value={{}}>{children}</userContext.Provider>;
 }
 
-export { ActiveUser, userContext };
+export { ActiveUser };

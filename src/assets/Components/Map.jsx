@@ -112,7 +112,7 @@ function MoveMap({ position }) {
 
 function AddCity() {
   const navigate = useNavigate();
-  const map = useMapEvent({
+  useMapEvent({
     click: (e) => {
       navigate(`form?lat=${e.latlng.lat}&lng=${e.latlng.lng}`);
     },
