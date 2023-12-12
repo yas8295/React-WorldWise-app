@@ -811,21 +811,7 @@ select[multiple].input-lg {
   display: block;
   padding: 10px 15px;
 }
-.nav > li >,
-.nav > li > a:focus {
-  text-decoration: none;
-  background-color: #eeeeee;
-}
-.nav > li.disabled > a {
-  color: #777777;
-}
-.nav > li.disabled > a:hover,
-.nav > li.disabled > a:focus {
-  color: #777777;
-  text-decoration: none;
-  cursor: not-allowed;
-  background-color: transparent;
-}
+
 .nav .open > a,
 .nav .open > a:hover,
 .nav .open > a:focus {
