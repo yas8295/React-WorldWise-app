@@ -106,7 +106,7 @@ input:focus-visible,
 textarea:focus-visible {
   outline: none;
   background-color: white !important;
-  transition: 0.4s;
+  transition: 0.5s;
 }
 
 .leaflet-container {
