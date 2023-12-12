@@ -1,0 +1,452 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  transform-style: preserve-3d;
+  font-family: Manrope, sans-serif;
+  margin: 0 !important;
+  padding: 0 !important;
+  box-sizing: border-box;
+  background-color: #2d3439;
+  color: white;
+}
+
+::-webkit-scrollbar {
+  width: 4px;
+  border-radius: 500px;
+  background-color: rgb(61, 61, 61);
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 500px;
+  background-color: rgba(148, 148, 148, 0.773);
+}
+
+h1 {
+  margin: 0;
+  font-size: 18px;
+}
+p {
+  margin: 0;
+  font-size: 16px;
+}
+
+main {
+  background-image: linear-gradient(rgba(36, 42, 46, 0.8), rgb(64 65 65 / 80%)),
+    url(images/bg.jpg);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: black;
+  min-width: 100%;
+  min-height: 100vh;
+}
+
+.active:not(:nth-of-type(3)) {
+  color: #00c46a !important;
+}
+
+a {
+  color: inherit;
+  text-decoration: none !important;
+  transition: 0.5s;
+}
+
+.NavLink:hover {
+  color: #00c46a !important;
+}
+
+.delete:hover {
+  background-color: rgba(255, 178, 23, 0.853) !important;
+  color: black;
+}
+
+.app .active {
+  color: white !important;
+  background-color: #1f2021 !important;
+  box-shadow: 0px 0px 2px 2px inset rgb(141, 141, 141);
+  background-image: radial-gradient(
+    100% 100% at 100% 0,
+    #b2b2b289 0,
+    #00000066 100%
+  );
+  opacity: 1 !important;
+}
+
+.app .city .active {
+  background-color: rgba(8, 211, 133, 0.548) !important;
+  box-shadow: none;
+}
+
+.app .city a:hover {
+  transition: 0.3s !important;
+  background-color: rgba(8, 211, 133, 0.548) !important;
+}
+
+.wiki {
+  color: rgb(255, 178, 23);
+  text-decoration: underline !important;
+  background-color: transparent !important;
+}
+
+.leaflet-layer,
+.leaflet-control-zoom-in,
+.leaflet-control-zoom-out,
+.leaflet-control-attribution {
+  filter: invert(100%) hue-rotate(180deg) brightness(95%) contrast(90%);
+}
+
+.leaflet-popup-content-wrapper {
+  font-size: 14px;
+  width: fit-content;
+  background-color: rgb(66, 72, 77);
+  color: white;
+  border-left: 4px solid rgb(1 191 105);
+}
+
+.leaflet-popup-close-button {
+  color: white !important;
+}
+
+input:focus-visible,
+textarea:focus-visible {
+  outline: none;
+  background-color: white !important;
+  transition: 0.4s;
+}
+
+.leaflet-container {
+  background: #000;
+  outline-offset: 1px;
+}
+
+/* loader */
+
+.loader {
+  width: 8em;
+  height: 8em;
+  font-size: 9px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.loader .face {
+  position: absolute;
+  border-radius: 50%;
+  border-style: solid;
+  animation: animate 1.5s alternate linear infinite;
+}
+
+.loader .face:nth-child(1) {
+  width: 100%;
+  height: 100%;
+  color: gold;
+  border-color: currentColor transparent transparent currentColor;
+  border-width: 0.2em 0.2em 0em 0em;
+  --deg: -45deg;
+  animation-direction: normal;
+}
+
+.loader .face:nth-child(2) {
+  width: 70%;
+  height: 70%;
+  color: lime;
+  border-color: currentColor currentColor transparent transparent;
+  border-width: 0.2em 0em 0em 0.2em;
+  --deg: -135deg;
+  animation-direction: reverse;
+}
+
+.loader .face .circle {
+  position: absolute;
+  width: 50%;
+  height: 0.1em;
+  top: 50%;
+  left: 50%;
+  background-color: transparent;
+  transform: rotate(var(--deg));
+  transform-origin: left;
+}
+
+.loader .face .circle::before {
+  position: absolute;
+  top: -0.5em;
+  right: -0.5em;
+  content: "";
+  width: 1em;
+  height: 1em;
+  background-color: currentColor;
+  border-radius: 50%;
+  box-shadow: 0 0 2em, 0 0 4em, 0 0 6em, 0 0 8em, 0 0 10em,
+    0 0 0 0.5em rgba(255, 255, 0, 0.1);
+}
+
+@keyframes animate {
+  to {
+    transform: rotate(1turn);
+  }
+}
+
+/* delete */
+
+.deleting {
+  position: relative;
+  display: grid;
+  grid-template-columns: 33% 33% 33%;
+  grid-gap: 2px;
+  width: 60px;
+  height: 60px;
+}
+.deleting > div {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background: #e76225;
+  transform: scale(0);
+  transform-origin: center center;
+  animation: loader 2s infinite linear;
+}
+.deleting > div:nth-of-type(1),
+.deleting > div:nth-of-type(5),
+.deleting > div:nth-of-type(9) {
+  animation-delay: 0.4s;
+}
+.deleting > div:nth-of-type(4),
+.deleting > div:nth-of-type(8) {
+  animation-delay: 0.2s;
+}
+.deleting > div:nth-of-type(2),
+.deleting > div:nth-of-type(6) {
+  animation-delay: 0.6s;
+}
+.deleting > div:nth-of-type(3) {
+  animation-delay: 0.8s;
+}
+
+@keyframes loader {
+  0% {
+    transform: scale(0);
+  }
+  40% {
+    transform: scale(1);
+  }
+  80% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(0);
+  }
+}
+
+/* Error */
+
+.error .circle,
+.error .circle-border {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+}
+
+.error .circle {
+  z-index: 1;
+  position: relative;
+  background: white;
+  transform: scale(1);
+  animation: success-anim 1s alternate infinite;
+}
+
+.error .circle-border {
+  z-index: 0;
+  position: absolute;
+  transform: scale(1.1);
+  animation: circle-anim 1s alternate infinite;
+  background: #f86;
+}
+
+@keyframes success-anim {
+  0% {
+    transform: scale(0);
+  }
+  30% {
+    transform: scale(0);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+@keyframes circle-anim {
+  from {
+    transform: scale(0);
+  }
+  to {
+    transform: scale(1.1);
+  }
+}
+.error .error::before,
+.error .error::after {
+  content: "";
+  display: block;
+  height: 4px;
+  background: #f86;
+  position: absolute;
+}
+
+.error .error::before {
+  width: 40px;
+  top: 48%;
+  left: 16%;
+  transform: rotateZ(50deg);
+}
+
+.error .error::after {
+  width: 40px;
+  top: 48%;
+  left: 16%;
+  transform: rotateZ(-50deg);
+}
+
+.date {
+  background-color: #d6dee0;
+  font-size: 15px;
+  border-radius: 7px;
+  box-shadow: inset 0px 0px 2px 3px #000;
+}
+
+.react-datepicker {
+  font-size: 12px !important;
+}
+
+.button-29,
+.button-28,
+.button-27 {
+  appearance: none;
+  background-image: radial-gradient(
+    100% 100% at 100% 0,
+    #00c46a 0,
+    #7fbd58 100%
+  );
+  border: 0;
+  border-radius: 6px;
+  box-shadow: rgba(45, 35, 66, 0.4) 0 2px 4px,
+    rgba(45, 35, 66, 0.3) 0 7px 13px -3px, rgba(58, 65, 111, 0.5) 0 -3px 0 inset;
+  box-sizing: border-box;
+  color: #fff;
+  cursor: pointer;
+  height: 48px;
+  justify-content: center;
+  padding-left: 16px;
+  padding-right: 16px;
+  text-align: left;
+  transition: box-shadow 0.5s, transform 0.5s;
+  user-select: none;
+  -webkit-user-select: none;
+  font-size: 16px;
+}
+
+.button-27 {
+  background-image: none;
+  background-color: transparent;
+  border: 1px solid white;
+}
+
+.button-29:focus {
+  box-shadow: #3c4fe0 0 0 0 1.5px inset, rgba(45, 35, 66, 0.4) 0 2px 4px,
+    rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #3c4fe0 0 -3px 0 inset;
+}
+
+.button-29:hover {
+  box-shadow: rgba(45, 35, 66, 0.4) 0 4px 8px,
+    rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #3c4fe0 0 -3px 0 inset;
+  transform: translateY(-2px);
+}
+
+.button-29:active {
+  box-shadow: #3c4fe0 0 3px 7px inset;
+  transform: translateY(2px);
+}
+
+.app .night {
+  background-image: radial-gradient(
+    100% 100% at 100% 0px,
+    rgb(163 213 190) 0px,
+    rgb(255 255 255) 100%
+  );
+  color: black !important;
+}
+
+.cities.night {
+  background-color: white !important;
+  background-image: radial-gradient(
+    100% 100% at 100% 0px,
+    rgb(255 255 255 / 38%) 0px,
+    rgb(196 196 196 / 40%) 100%
+  ) !important;
+}
+
+.country.night {
+  background-color: white !important;
+  background-image: radial-gradient(
+    100% 100% at 100% 0px,
+    rgb(255 255 255 / 38%) 0px,
+    rgb(196 196 196 / 40%) 100%
+  ) !important;
+}
+
+.app-nav-cities.night,
+.app-nav-countries.night {
+  opacity: 1 !important;
+  background-image: none;
+  background-color: white !important;
+}
+
+.app-nav-cities.night.active,
+.app-nav-countries.night.active {
+  font-weight: 600;
+  color: rgb(0 0 0) !important;
+  background-image: radial-gradient(
+    100% 100% at 100% 0,
+    #ffffff 0,
+    #5cc98a 100%
+  );
+}
+
+.app-nav-countries.night.active {
+  background-image: radial-gradient(
+    100% 100% at 100% 0,
+    #ffffff 0,
+    #ffa603 100%
+  );
+}
+
+.current-city.night,
+form.night > div {
+  background-image: radial-gradient(
+    100% 100% at 100% 0px,
+    rgb(255 255 255) 0px,
+    rgb(236, 255, 241) 100%
+  ) !important;
+}
+
+.current-city.night h1,
+form.night h1 {
+  color: black !important;
+  background-image: none;
+}
+
+.form-back.night {
+  background-image: radial-gradient(
+    100% 100% at 100% 0px,
+    rgb(0, 0, 0) 0px,
+    rgb(60, 60, 60) 100%
+  ) !important;
+  color: white !important;
+}
+
+.form-input.night {
+  border: 4px inset rgb(255 255 255) !important;
+  box-shadow: rgb(255 255 255) 0px 0px 1px !important;
+  background-image: none;
+}
