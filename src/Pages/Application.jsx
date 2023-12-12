@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { Link, NavLink, Outlet } from "react-router-dom";
-import favicon from "../../../public/favicon.png";
+import favicon from "../../public/favicon.png";
 import Map from "../Components/Map";
 import { Contexts } from "../Context/Context";
 import NightModeButton from "../Components/NightModeButton";

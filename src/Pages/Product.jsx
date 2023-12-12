@@ -1,5 +1,5 @@
 import React from "react";
-import Pimage from "../../images/img-1.jpg";
+import Pimage from "../images/img-1.jpg";
 import NavBar from "../Components/NavBar";
 
 export default function Product() {

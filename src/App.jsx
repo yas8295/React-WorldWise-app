@@ -1,22 +1,22 @@
 import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { ActiveUser } from "./assets/Context/ActiveUser";
-import { Context } from "./assets/Context/Context";
+import { ActiveUser } from "./Context/ActiveUser";
+import { Context } from "./Context/Context";
 import { Suspense, lazy } from "react";
 import "./bootstrap-grid.min.css";
 import "./bootstrap-utilities.min.css";
 import "./bootstrap.css";
 import "./index.css";
-import Cities from "./assets/Components/Cities";
-import Countries from "./assets/Components/Countries";
-import City from "./assets/Components/City";
-import Form from "./assets/Components/Form";
-import LoadingFullPage from "./assets/Components/LoadingFullPage";
-const Pricing = lazy(() => import("./assets/Pages/Pricing"));
-const MainPage = lazy(() => import("./assets/Pages/MainPage"));
-const Login = lazy(() => import("./assets/Pages/Login"));
-const Application = lazy(() => import("./assets/Pages/Application"));
-const Product = lazy(() => import("./assets/Pages/Product"));
+import Cities from "./Components/Cities";
+import Countries from "./Components/Countries";
+import City from "./Components/City";
+import Form from "./Components/Form";
+import LoadingFullPage from "./Components/LoadingFullPage";
+const Pricing = lazy(() => import("./Pages/Pricing"));
+const MainPage = lazy(() => import("./Pages/MainPage"));
+const Login = lazy(() => import("./Pages/Login"));
+const Application = lazy(() => import("./Pages/Application"));
+const Product = lazy(() => import("./Pages/Product"));
 
 function App() {
   return (

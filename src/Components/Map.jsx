@@ -12,7 +12,7 @@ import { Contexts } from "../Context/Context";
 import { useGeolocation } from "../GeoLocation/useGeolocation.";
 
 export default function Map() {
-  const { cities, user, dispatch } = useContext(Contexts);
+  const { cities, user, dispatch, nightMode } = useContext(Contexts);
   const [searchParams] = useSearchParams();
   const [position, setPosition] = useState([30, 30]);
   const { currentPosition, loadPosition, getPosition } = useGeolocation();
@@ -40,28 +40,39 @@ export default function Map() {
 
   return (
     <div className="h-100 w-100 position-relative">
-      <MapContainer
+      <div
         className="h-100 w-100"
-        style={{ zIndex: "0" }}
-        center={currentPosition || position}
-        zoom={6}
-        scrollWheelZoom={true}
+        style={{
+          filter: `${
+            nightMode
+              ? "invert(100%) hue-rotate(180deg) brightness(95%) contrast(90%)"
+              : ""
+          }`,
+        }}
       >
-        <TileLayer
-          attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-          url="https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png"
-        />
-        {cities.map((city) => (
-          <Marker
-            key={city.id}
-            position={[city.position.lat, city.position.lng]}
-          >
-            <Popup>{city.notes || "add notes"}</Popup>
-          </Marker>
-        ))}
-        <MoveMap position={position}></MoveMap>
-        <AddCity></AddCity>
-      </MapContainer>
+        <MapContainer
+          className={`h-100 w-100`}
+          style={{ zIndex: "0" }}
+          center={currentPosition || position}
+          zoom={6}
+          scrollWheelZoom={true}
+        >
+          <TileLayer
+            attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+            url="https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png"
+          />
+          {cities.map((city) => (
+            <Marker
+              key={city.id}
+              position={[city.position.lat, city.position.lng]}
+            >
+              <Popup>{city.notes || "add notes"}</Popup>
+            </Marker>
+          ))}
+          <MoveMap position={position}></MoveMap>
+          <AddCity></AddCity>
+        </MapContainer>
+      </div>
       {currentPosition ? null : (
         <button
           onClick={getCurrentPosition}

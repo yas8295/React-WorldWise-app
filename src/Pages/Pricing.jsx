@@ -1,6 +1,6 @@
 import React from "react";
 import NavBar from "../Components/NavBar";
-import Pimage from "../../images/img-2.jpg";
+import Pimage from "../images/img-2.jpg";
 
 export default function Pricing() {
   return (

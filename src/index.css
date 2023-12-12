@@ -90,13 +90,6 @@ a {
   background-color: transparent !important;
 }
 
-.leaflet-layer,
-.leaflet-control-zoom-in,
-.leaflet-control-zoom-out,
-.leaflet-control-attribution {
-  filter: invert(100%) hue-rotate(180deg) brightness(95%) contrast(90%);
-}
-
 .leaflet-popup-content-wrapper {
   font-size: 14px;
   width: fit-content;
@@ -117,9 +110,11 @@ textarea:focus-visible {
 }
 
 .leaflet-container {
-  background: #000;
+  background: #ffffff;
   outline-offset: 1px;
 }
+
+
 
 /* loader */
 
