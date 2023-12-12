@@ -10,11 +10,11 @@ import Cities from "./Components/Cities";
 import Countries from "./Components/Countries";
 import City from "./Components/City";
 import Form from "./Components/Form";
-import MainPage from "./assets/Pages/MainPage";
-import Pricing from "./assets/Pages/Pricing";
-import Product from "./assets/Pages/Product";
+import MainPage from "./Pages/MainPage";
+import Pricing from "./Pages/Pricing";
+import Product from "./Pages/Product";
 import Login from "./Pages/Login";
-import Application from "./assets/Pages/Application";
+import Application from "./Pages/Application";
 
 function App() {
   return (
