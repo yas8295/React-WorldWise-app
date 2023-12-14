@@ -114,8 +114,6 @@ textarea:focus-visible {
   outline-offset: 1px;
 }
 
-
-
 /* loader */
 
 .loader {
@@ -367,7 +365,7 @@ textarea:focus-visible {
   background-image: radial-gradient(
     100% 100% at 100% 0px,
     rgb(163 213 190) 0px,
-    rgb(255 255 255) 100%
+    rgb(255 246 246) 100%
   );
   color: black !important;
 }
@@ -416,8 +414,7 @@ textarea:focus-visible {
   );
 }
 
-.current-city.night,
-form.night > div {
+.current-city.night {
   background-image: radial-gradient(
     100% 100% at 100% 0px,
     rgb(255 255 255) 0px,
@@ -425,10 +422,23 @@ form.night > div {
   ) !important;
 }
 
+.form.night > div {
+  background-image: none !important;
+}
+
+.form.night {
+  background-image: radial-gradient(
+    100% 100% at 100% 0px,
+    rgb(255 218 205 / 52%) 0px,
+    rgb(255 255 255) 100%
+  ) !important;
+}
+
 .current-city.night h1,
-form.night h1 {
+.form.night h1 {
   color: black !important;
-  background-image: none;
+  background-image: none !important;
+  background-color: transparent !important;
 }
 
 .form-back.night {
@@ -443,5 +453,5 @@ form.night h1 {
 .form-input.night {
   border: 4px inset rgb(255 255 255) !important;
   box-shadow: rgb(255 255 255) 0px 0px 1px !important;
-  background-image: none;
+  background-image: none !important;
 }

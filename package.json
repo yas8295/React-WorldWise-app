@@ -15,6 +15,8 @@
     "@anatoliygatt/dark-mode-toggle": "^1.0.1",
     "@emotion/react": "^11.11.1",
     "@emotion/styled": "^11.11.0",
+    "@jdion/tilt-react": "^1.0.0",
+    "framer-motion": "^10.16.16",
     "leaflet": "^1.9.4",
     "prop-types": "^15.8.1",
     "react": "^18.2.0",
@@ -22,7 +24,8 @@
     "react-dom": "^18.2.0",
     "react-leaflet": "^4.2.1",
     "react-router-dom": "^6.20.1",
-    "react-toggle-dark-mode": "^1.1.1"
+    "react-toggle-dark-mode": "^1.1.1",
+    "vanilla-tilt": "^1.8.1"
   },
   "devDependencies": {
     "@babel/plugin-proposal-private-property-in-object": "^7.21.11",

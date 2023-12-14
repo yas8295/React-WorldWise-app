@@ -4,6 +4,7 @@ import favicon from "../../public/favicon.png";
 import Map from "../Components/Map";
 import { Contexts } from "../Context/Context";
 import NightModeButton from "../Components/NightModeButton";
+import { motion } from "framer-motion";
 
 export default function Application() {
   const { nightMode } = useContext(Contexts);
@@ -18,10 +19,20 @@ export default function Application() {
       >
         <NightModeButton></NightModeButton>
         <div className="d-flex align-items-center justify-content-center gap-5 flex-column w-100">
-          <Link className="d-flex gap-3 align-items-center" to="/">
-            <img src={favicon} alt="" width={"55px"} />
-            <p style={{ fontSize: "30px", fontWeight: "400" }}>WorldWise</p>
-          </Link>
+          <motion.div
+            initial={{ scale: 0, opacity: 0 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{
+              type: "spring",
+              stiffness: 200,
+              delay: 1,
+            }}
+          >
+            <Link className="d-flex gap-3 align-items-center" to="/">
+              <img src={favicon} alt="" width={"55px"} />
+              <p style={{ fontSize: "30px", fontWeight: "400" }}>WorldWise</p>
+            </Link>
+          </motion.div>
           <div className="d-flex gap-3 align-items-center flex-column w-100">
             <div
               className="d-flex mb-4 align-items-center"
@@ -57,8 +68,13 @@ export default function Application() {
               </NavLink>
             </div>
             <div
-              className="d-flex overflow-auto city gap-4 flex-wrap w-100 justify-content-center"
-              style={{ maxHeight: "420px", minHeight: "200px" }}
+              className="d-flex city gap-4 flex-wrap w-100 justify-content-center"
+              style={{
+                maxHeight: "420px",
+                minHeight: "200px",
+                overflowX: "hidden",
+                overflowY: "auto",
+              }}
             >
               <Outlet></Outlet>
             </div>

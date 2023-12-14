@@ -5,6 +5,7 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import Loading from "./Loading";
 import Error from "./Error";
+import { motion } from "framer-motion";
 
 export default function Form() {
   const { loading, dispatch, addCity, cities, error, nightMode } =
@@ -44,13 +45,6 @@ export default function Form() {
     addCity(newCity);
     navigate("/Application/cities");
   }
-
-  useEffect(function () {
-    setTimeout(function () {
-      const form = document.querySelector(".form");
-      if (!loading && form) form.style.scale = "1";
-    }, 100);
-  });
 
   useEffect(
     function () {
@@ -92,15 +86,16 @@ export default function Form() {
   }
 
   return (
-    <form
+    <motion.form
+      initial={{ scale: 0, opacity: 0 }}
+      animate={{ scale: 1, opacity: 1 }}
+      transition={{ type: "spring", stiffness: 100, duration: 1 }}
       className={`${
         !nightMode ? "night" : ""
       } form d-flex p-5 flex-column gap-5 flex-grow-1 w-100 position-relative`}
       style={{
         borderRadius: "12px",
-        transition: "0.5s",
         color: "black",
-        scale: "0",
         borderTop: "3px solid rgb(255 181 69)",
       }}
     >
@@ -109,7 +104,6 @@ export default function Form() {
         style={{
           left: "0",
           top: "0",
-          backgroundColor: "rgb(66, 72, 77)",
           zIndex: "-1",
           borderRadius: "12px",
           backgroundImage:
@@ -203,6 +197,6 @@ export default function Form() {
           ← BACK
         </button>
       </div>
-    </form>
+    </motion.form>
   );
 }

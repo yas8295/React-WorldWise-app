@@ -3,21 +3,12 @@ import { Link, useNavigate, useParams } from "react-router-dom";
 import { Contexts } from "../Context/Context";
 import Loading from "./Loading";
 import Error from "./Error";
+import { motion } from "framer-motion";
 
 export default function City() {
   const navigate = useNavigate();
   const { id } = useParams();
   const { city, getCity, loading, error, nightMode } = useContext(Contexts);
-
-  useEffect(function () {
-    setTimeout(function () {
-      const city = document.querySelector(".current-city");
-      if (!loading && city) {
-        city.style.scale = "1";
-        city.style.rotate = "0deg";
-      }
-    }, 100);
-  });
 
   useEffect(
     function () {
@@ -37,16 +28,16 @@ export default function City() {
   }
 
   return (
-    <div
+    <motion.div
+      initial={{ scale: 0, opacity: 0, rotate: 360 }}
+      animate={{ scale: 1, opacity: 1, rotate: 0 }}
+      transition={{ type: "spring", stiffness: 60, duration: 1 }}
       className={`${
         !nightMode ? "night" : ""
       } current-city d-flex p-5 flex-column gap-5 flex-grow-1 w-100`}
       style={{
-        scale: "0",
-        rotate: "360deg",
         borderRadius: "12px",
         backgroundColor: "#42484d",
-        transition: "1s",
         backgroundImage:
           "radial-gradient( 100% 100% at 100% 0, #c4c4c454 0, #141514cc 100% )",
         borderTop: "3px solid #1cbc1d",
@@ -131,6 +122,6 @@ export default function City() {
       >
         ← BACK
       </button>
-    </div>
+    </motion.div>
   );
 }

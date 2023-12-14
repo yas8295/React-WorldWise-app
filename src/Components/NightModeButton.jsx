@@ -10,7 +10,7 @@ export default function NightModeButton() {
   };
 
   return (
-    <div className="position-absolute" style={{ left: "8px", top: "5px" }}>
+    <div className="position-absolute" style={{ left: "10px", top: "10px" }}>
       <DarkModeSwitch
         style={{ marginBottom: "2rem" }}
         checked={!nightMode}

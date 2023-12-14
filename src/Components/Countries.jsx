@@ -1,19 +1,12 @@
-import { useContext, useEffect } from "react";
+import { useContext } from "react";
 import { Contexts } from "../Context/Context";
 import Loading from "./Loading";
 import Error from "./Error";
 import Deleting from "./Deleting";
+import { motion } from "framer-motion";
 
 export default function Cities() {
   const { cities, loading, error, deleting, nightMode } = useContext(Contexts);
-
-  useEffect(function () {
-    setTimeout(function () {
-      const country = document.querySelectorAll(".country");
-      if (!loading && country)
-        country.forEach((country) => (country.style.scale = "1"));
-    }, 100);
-  });
 
   if (error) {
     return <Error></Error>;
@@ -29,7 +22,15 @@ export default function Cities() {
 
   return Array.from(new Set(cities.map((city) => city.country))).map(
     (country, i) => (
-      <div
+      <motion.div
+        initial={{ opacity: 0, scale: 0 }}
+        whileInView={{ opacity: 1, scale: 1 }}
+        transition={{
+          type: "spring",
+          stiffness: 100,
+          duration: 1,
+          delay: `0.${Math.ceil(Math.random() * 9)}`,
+        }}
         key={country}
         className={`${
           !nightMode ? "night" : ""
@@ -39,9 +40,6 @@ export default function Cities() {
           backgroundColor: "#42484d",
           borderLeft: "5px solid  rgb(255 165 0 / 99%)",
           maxHeight: "120px",
-          transition: "1s",
-          transitionDelay: `0.${Math.ceil(Math.random() * 9)}s`,
-          scale: "0",
           backgroundImage:
             "radial-gradient( 100% 100% at 100% 0, rgb(193 193 193 / 68%) 0, #36363600 100% )",
         }}
@@ -56,7 +54,7 @@ export default function Cities() {
           />
           <h1>{country}</h1>
         </div>
-      </div>
+      </motion.div>
     )
   );
 }
