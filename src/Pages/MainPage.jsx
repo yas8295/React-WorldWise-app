@@ -3,9 +3,11 @@ import { Link } from "react-router-dom";
 import NavBar from "../Components/NavBar";
 import { useContext } from "react";
 import { Contexts } from "../Context/Context";
+import { motion, useIsPresent } from "framer-motion";
 
 export default function MainPage() {
   const { user } = useContext(Contexts);
+  const isPresent = useIsPresent();
 
   return (
     <>
@@ -44,6 +46,16 @@ export default function MainPage() {
             START TRACKING NOW
           </Link>
         </div>
+        <motion.div
+          initial={{ scaleX: 1 }}
+          animate={{
+            scaleX: 0,
+            transition: { duration: 0.5, ease: "circOut" },
+          }}
+          exit={{ scaleX: 1, transition: { duration: 0.5, ease: "circIn" } }}
+          style={{ originX: isPresent ? 0 : 1 }}
+          className="privacy-screen"
+        />
       </main>
     </>
   );

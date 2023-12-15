@@ -1,8 +1,11 @@
 import React from "react";
 import Pimage from "../images/img-1.jpg";
 import NavBar from "../Components/NavBar";
+import { motion, useIsPresent } from "framer-motion";
 
 export default function Product() {
+  const isPresent = useIsPresent();
+
   return (
     <>
       <NavBar></NavBar>
@@ -37,7 +40,17 @@ export default function Product() {
               expedita ratione iusto, magni, id sapiente sequi officiis et.
             </p>
           </div>
-        </div>
+        </div>{" "}
+        <motion.div
+          initial={{ scaleX: 1 }}
+          animate={{
+            scaleX: 0,
+            transition: { duration: 0.5, ease: "circOut" },
+          }}
+          exit={{ scaleX: 1, transition: { duration: 0.5, ease: "circIn" } }}
+          style={{ originX: isPresent ? 0 : 1 }}
+          className="privacy-screen"
+        />
       </div>
     </>
   );

@@ -10,6 +10,7 @@ body {
   box-sizing: border-box;
   background-color: #2d3439;
   color: white;
+  overflow-x: hidden;
 }
 
 ::-webkit-scrollbar {
@@ -454,4 +455,21 @@ textarea:focus-visible {
   border: 4px inset rgb(255 255 255) !important;
   box-shadow: rgb(255 255 255) 0px 0px 1px !important;
   background-image: none !important;
+}
+
+.privacy-screen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: linear-gradient(
+      rgba(36, 42, 46, 0.125),
+      rgb(64 65 65 / 80%)
+    ),
+    url(images/1920x1200-5836561-city-night-artist-artwork-digital-art-hd-4k-photography.jpg);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  z-index: 2;
 }

@@ -90,6 +90,11 @@ export default function Form() {
       initial={{ scale: 0, opacity: 0 }}
       animate={{ scale: 1, opacity: 1 }}
       transition={{ type: "spring", stiffness: 100, duration: 1 }}
+      exit={{
+        opacity: 0,
+        scale: 0,
+        transition: { duration: 0.4 },
+      }}
       className={`${
         !nightMode ? "night" : ""
       } form d-flex p-5 flex-column gap-5 flex-grow-1 w-100 position-relative`}

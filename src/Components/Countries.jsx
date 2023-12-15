@@ -31,6 +31,11 @@ export default function Cities() {
           duration: 1,
           delay: `0.${Math.ceil(Math.random() * 9)}`,
         }}
+        exit={{
+          opacity: 0,
+          scale: 0,
+          transition: { duration: 0.2 },
+        }}
         key={country}
         className={`${
           !nightMode ? "night" : ""

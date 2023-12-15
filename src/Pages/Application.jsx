@@ -1,12 +1,11 @@
-import React, { useContext } from "react";
+import React, { memo, useContext } from "react";
 import { Link, NavLink, Outlet } from "react-router-dom";
 import favicon from "../../public/favicon.png";
 import Map from "../Components/Map";
 import { Contexts } from "../Context/Context";
 import NightModeButton from "../Components/NightModeButton";
-import { motion } from "framer-motion";
 
-export default function Application() {
+const Application = memo(function Application() {
   const { nightMode } = useContext(Contexts);
 
   return (
@@ -19,20 +18,12 @@ export default function Application() {
       >
         <NightModeButton></NightModeButton>
         <div className="d-flex align-items-center justify-content-center gap-5 flex-column w-100">
-          <motion.div
-            initial={{ scale: 0, opacity: 0 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{
-              type: "spring",
-              stiffness: 200,
-              delay: 1,
-            }}
-          >
+          <div>
             <Link className="d-flex gap-3 align-items-center" to="/">
               <img src={favicon} alt="" width={"55px"} />
               <p style={{ fontSize: "30px", fontWeight: "400" }}>WorldWise</p>
             </Link>
-          </motion.div>
+          </div>
           <div className="d-flex gap-3 align-items-center flex-column w-100">
             <div
               className="d-flex mb-4 align-items-center"
@@ -94,4 +85,6 @@ export default function Application() {
       </div>
     </div>
   );
-}
+});
+
+export default Application;

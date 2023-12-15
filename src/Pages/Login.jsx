@@ -2,6 +2,7 @@ import React, { useContext, useReducer } from "react";
 import NavBar from "../Components/NavBar";
 import { useNavigate } from "react-router-dom";
 import { Contexts } from "../Context/Context";
+import { motion, useIsPresent } from "framer-motion";
 
 const initialValues = { email: "mohamed@email", password: "8295" };
 
@@ -17,6 +18,8 @@ function reducer(states, action) {
 }
 
 export default function Login() {
+  const isPresent = useIsPresent();
+
   const [{ email, password }, dispatchLogin] = useReducer(
     reducer,
     initialValues
@@ -36,7 +39,7 @@ export default function Login() {
   return (
     <>
       <NavBar></NavBar>
-      <div className="main p-3 py-5 p-sm-5">
+      <div className="main p-3 py-5 p-sm-5 vh-100">
         <div
           className="d-flex py-5 align-items-center justify-content-center "
           style={{ marginTop: "120px" }}
@@ -109,7 +112,17 @@ export default function Login() {
             </div>
             <button className="button-29 align-self-start">Login</button>
           </form>
-        </div>
+        </div>{" "}
+        <motion.div
+          initial={{ scaleX: 1 }}
+          animate={{
+            scaleX: 0,
+            transition: { duration: 0.5, ease: "circOut" },
+          }}
+          exit={{ scaleX: 1, transition: { duration: 0.5, ease: "circIn" } }}
+          style={{ originX: isPresent ? 0 : 1 }}
+          className="privacy-screen"
+        />
       </div>
     </>
   );

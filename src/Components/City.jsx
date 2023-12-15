@@ -32,6 +32,12 @@ export default function City() {
       initial={{ scale: 0, opacity: 0, rotate: 360 }}
       animate={{ scale: 1, opacity: 1, rotate: 0 }}
       transition={{ type: "spring", stiffness: 60, duration: 1 }}
+      exit={{
+        opacity: 0,
+        scale: 0,
+        rotate: -360,
+        transition: { duration: 0.4 },
+      }}
       className={`${
         !nightMode ? "night" : ""
       } current-city d-flex p-5 flex-column gap-5 flex-grow-1 w-100`}
