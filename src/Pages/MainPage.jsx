@@ -12,7 +12,7 @@ export default function MainPage() {
   return (
     <>
       <NavBar></NavBar>
-      <main className="main p-3 py-5 p-sm-5">
+      <main className="main p-3 py-5 p-sm-5" style={{ minHeight: "100vh" }}>
         <div
           className="d-flex p-sm-5 py-5 flex-column text-center justify-content-center gap-5"
           style={{ marginTop: "150px" }}

@@ -9,7 +9,7 @@ export default function Pricing() {
   return (
     <>
       <NavBar></NavBar>
-      <div className="main p-3 py-5 p-sm-5">
+      <div className="main p-3 py-5 p-sm-5" style={{ minHeight: "100vh" }}>
         <div
           className="d-flex p-sm-5 py-5 align-items-center justify-content-center gap-5 flex-wrap"
           style={{ marginTop: "135px" }}
